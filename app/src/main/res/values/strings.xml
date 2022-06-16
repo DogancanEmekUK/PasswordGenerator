@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">PasswordGenerator</string>
+    <string name="enter_the_number_of_digits_you_want">Enter the number of digits you want</string>
+    <string name="enter">Enter</string>
+    <string name="copy_to_clipboard">Copy to clipboard</string>
+    <string name="your_password">Your password</string>
+    <string name="password_generator">Password Generator</string>
+    <string name="symbolical">Symbolical</string>
+    <string name="alphabetical">Alphabetical</string>
+    <string name="numerical">Numerical</string>
+    <string name="mix">Mix</string>
+    <string name="clear_all">Clear all</string>
+</resources>
