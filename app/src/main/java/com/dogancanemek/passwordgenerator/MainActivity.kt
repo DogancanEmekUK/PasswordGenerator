@@ -35,7 +35,7 @@ class MainActivity : AppCompatActivity() {
             }
             digit.let {
                 password.setTextColor(ContextCompat.getColor(this, R.color.white))
-                val x = digit.text.toString()
+                val x = it.text.toString()
                 if (checkInteger(x)) {
                     val digitNumber = x.toInt()
                     password.text = generateNumericalPassword(digitNumber)
@@ -52,7 +52,7 @@ class MainActivity : AppCompatActivity() {
             }
             digit.let {
                 password.setTextColor(ContextCompat.getColor(this, R.color.white))
-                val x = digit.text.toString()
+                val x = it.text.toString()
                 if (checkInteger(x)) {
                     val digitNumber = x.toInt()
                     password.text = generateAlphabeticalPassword(digitNumber)
@@ -69,7 +69,7 @@ class MainActivity : AppCompatActivity() {
             }
             digit.let {
                 password.setTextColor(ContextCompat.getColor(this, R.color.white))
-                val x = digit.text.toString()
+                val x = it.text.toString()
                 if (checkInteger(x)) {
                     val digitNumber = x.toInt()
                     password.text = generateSymbolicalPassword(digitNumber)
@@ -86,7 +86,7 @@ class MainActivity : AppCompatActivity() {
             }
             digit.let {
                 password.setTextColor(ContextCompat.getColor(this, R.color.white))
-                val x = digit.text.toString()
+                val x = it.text.toString()
                 if (checkInteger(x)) {
                     val digitNumber = x.toInt()
                     password.text = generateMixPassword(digitNumber)
