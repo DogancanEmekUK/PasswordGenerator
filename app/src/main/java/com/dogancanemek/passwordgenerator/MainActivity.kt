@@ -111,12 +111,9 @@ class MainActivity : AppCompatActivity() {
 
     private fun checkInteger(x: String): Boolean {
         var condition = true
-        for (i in x.indices) {
-            if (x[i] >= 48.toChar() && x[i] <= 57.toChar()) {
-                condition = true
-            } else {
+        x.forEach {
+            if (it < 48.toChar() || it > 57.toChar()) {
                 condition = false
-                return condition
             }
         }
         return condition
