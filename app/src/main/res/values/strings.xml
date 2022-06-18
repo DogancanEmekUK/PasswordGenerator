@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">PasswordGenerator</string>
+    <string name="app_name">Password Generator</string>
     <string name="enter_the_number_of_digits_you_want">Enter the number of digits you want</string>
     <string name="enter">Enter</string>
     <string name="copy_to_clipboard">Copy to clipboard</string>

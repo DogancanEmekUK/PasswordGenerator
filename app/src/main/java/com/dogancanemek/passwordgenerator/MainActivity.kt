@@ -4,33 +4,37 @@ import android.content.ClipData
 import android.content.ClipboardManager
 import android.content.Context
 import android.os.Bundle
-import android.widget.Button
-import android.widget.EditText
-import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
+import com.dogancanemek.passwordgenerator.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
+
+    private lateinit var binding: ActivityMainBinding
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        val view = binding.root
+        setContentView(view)
 
-        val numericalButton = findViewById<Button>(R.id.numericalButton)
-        val alphabeticalButton = findViewById<Button>(R.id.alphabeticalButton)
-        val symbolicalButton = findViewById<Button>(R.id.symbolicalButton)
-        val mixButton = findViewById<Button>(R.id.mixButton)
-        val digit = findViewById<EditText>(R.id.digit)
-        val password = findViewById<TextView>(R.id.password)
-        val copyButton = findViewById<Button>(R.id.copyButton)
-        val clearButton = findViewById<Button>(R.id.clearButton)
+        val numericalButton = binding.numericalButton
+        val alphabeticalButton = binding.alphabeticalButton
+        val symbolicalButton = binding.symbolicalButton
+        val mixButton = binding.mixButton
+        val digit = binding.digit
+        val password = binding.password
+        val copyButton = binding.copyButton
+        val clearButton = binding.clearButton
 
         numericalButton.setOnClickListener {
-            password.setTextColor(resources.getColor(R.color.white))
             if (digit.text.isEmpty()) {
                 Toast.makeText(this, "Please enter a number", Toast.LENGTH_LONG).show()
                 return@setOnClickListener
             }
-            if (digit != null) {
+            digit.let {
+                password.setTextColor(ContextCompat.getColor(this, R.color.white))
                 val x = digit.text.toString()
                 if (checkInteger(x)) {
                     val digitNumber = x.toInt()
@@ -42,12 +46,12 @@ class MainActivity : AppCompatActivity() {
         }
 
         alphabeticalButton.setOnClickListener {
-            password.setTextColor(resources.getColor(R.color.white))
             if (digit.text.isEmpty()) {
                 Toast.makeText(this, "Please enter a number", Toast.LENGTH_LONG).show()
                 return@setOnClickListener
             }
-            if (digit != null) {
+            digit.let {
+                password.setTextColor(ContextCompat.getColor(this, R.color.white))
                 val x = digit.text.toString()
                 if (checkInteger(x)) {
                     val digitNumber = x.toInt()
@@ -59,12 +63,12 @@ class MainActivity : AppCompatActivity() {
         }
 
         symbolicalButton.setOnClickListener {
-            password.setTextColor(resources.getColor(R.color.white))
             if (digit.text.isEmpty()) {
                 Toast.makeText(this, "Please enter a number", Toast.LENGTH_LONG).show()
                 return@setOnClickListener
             }
-            if (digit != null) {
+            digit.let {
+                password.setTextColor(ContextCompat.getColor(this, R.color.white))
                 val x = digit.text.toString()
                 if (checkInteger(x)) {
                     val digitNumber = x.toInt()
@@ -76,12 +80,12 @@ class MainActivity : AppCompatActivity() {
         }
 
         mixButton.setOnClickListener {
-            password.setTextColor(resources.getColor(R.color.white))
             if (digit.text.isEmpty()) {
                 Toast.makeText(this, "Please enter a number", Toast.LENGTH_LONG).show()
                 return@setOnClickListener
             }
-            if (digit != null) {
+            digit.let {
+                password.setTextColor(ContextCompat.getColor(this, R.color.white))
                 val x = digit.text.toString()
                 if (checkInteger(x)) {
                     val digitNumber = x.toInt()
@@ -99,7 +103,7 @@ class MainActivity : AppCompatActivity() {
 
         clearButton.setOnClickListener {
             digit.text.clear()
-            password.setTextColor(resources.getColor(R.color.hint))
+            password.setTextColor(ContextCompat.getColor(this, R.color.hint))
             password.text = getString(R.string.your_password)
         }
 
@@ -108,7 +112,12 @@ class MainActivity : AppCompatActivity() {
     private fun checkInteger(x: String): Boolean {
         var condition = true
         for (i in x.indices) {
-            condition = x[i] >= 48.toChar() && x[i] <= 57.toChar()
+            if (x[i] >= 48.toChar() && x[i] <= 57.toChar()) {
+                condition = true
+            } else {
+                condition = false
+                return condition
+            }
         }
         return condition
     }
